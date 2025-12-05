@@ -31,13 +31,13 @@
                 <h2 class="section-title">Live Events</h2>
                 <div class="gallery-container">
                     <img src="Imagesmk2\LiveEvents\SteamRe-rendered.jpg" class="gallery-item" alt="Queen + Adam Lambert - Rhapsody tour 2023/4">
-                    <img src="Imagesmk2\LiveEvents\houseRE-rendered.jpg" class="gallery-item" alt="Peter Gabriel - i/o tour 2023/4">
+                    <img src="Imagesmk2\LiveEvents\houseRE-rendered.jpg" class="gallery-item clickable-item" data-target="six" alt="Peter Gabriel - i/o tour 2023/4">
                     <img src="Imagesmk2\LiveEvents\tree1.jpg" class="gallery-item" alt="Soundstorm - 2024">
-                    <img src="Imagesmk2\LiveEvents\ArchRE-rendered4.jpg" class="gallery-item" alt="Peter Gabriel - i/o tour 2023/4">
-                    <img src="Imagesmk2\LiveEvents\TexasTimelapse.gif" class="gallery-item" alt="Texas - The Very Best Tour 2024">
+                    <img src="Imagesmk2\LiveEvents\ArchRE-rendered4.jpg" class="gallery-item clickable-item" data-target="six" alt="Peter Gabriel - i/o tour 2023/4">
+                    <img src="Imagesmk2\LiveEvents\TexasTimelapse.gif" class="gallery-item clickable-item" data-target="five" alt="Texas - The Very Best Tour 2024">
                     <img src="Imagesmk2\LiveEvents\QueenGif.gif" class="gallery-item" alt="Queen + Adam Lambert - Rhapsody tour 2023/4">
                     <img src="Imagesmk2/LiveEvents/Vision Factory - MDL Beast - 2024 by Luke Dyson - LD1_4049-Enhanced-NR.jpg" class="gallery-item" alt="Soundstorm - 2024">
-                    <img src="Imagesmk2/Texas/Screenshot 2024-09-22 221316.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
+                    <img src="Imagesmk2/Texas/Screenshot 2024-09-22 221316.jpg" class="gallery-item clickable-item" data-target="five" alt="Texas - The Very Best Tour 2024">
                 </div>
                 <div class="project-description">
                     <p>For 4+ years, I've delivered high-impact 3D assets and real-time visuals for major live events. My work combines technical precision with creative storytelling, creating immersive experiences that engage audiences on a massive scale. From architectural projections to motion graphics for stages, I bring dynamic visual concepts to life.</p>
@@ -167,9 +167,70 @@
                 </div>
             </div>
         </section>
+        <section class="section project-breakdown" id="eight">
+            <div class="section-content">
+                <h2 class="section-title">New Project</h2>
+                
+                <!-- First text box -->
+                <div class="breakdown-textbox">
+                    <p>Add your project description here.</p>
+                </div>
+                
+                <!-- First row of images -->
+                <div class="breakdown-gallery">
+                    <img src="Imagesmk2/path/to/image1.jpg" class="gallery-item" alt="Process step 1">
+                    <img src="Imagesmk2/path/to/image2.jpg" class="gallery-item" alt="Process step 2">
+                </div>
+                
+                <!-- Second text box -->
+                <div class="breakdown-textbox">
+                    <p>Add more details about your project here.</p>
+                </div>
+                
+                <!-- Second row of images -->
+                <div class="breakdown-gallery">
+                    <img src="Imagesmk2/path/to/image3.jpg" class="gallery-item" alt="Result 1">
+                    <img src="Imagesmk2/path/to/image4.jpg" class="gallery-item" alt="Result 2">
+                </div>
+            </div>
+        </section>
         </div>
     </div>
 
     <script src="scrollSnapmk2.js"></script>
+    <script>
+        // Handle clickable gallery items that link to breakdown sections
+        // Wait for snap system to be initialized
+        function initializeClickableItems() {
+            document.querySelectorAll('.clickable-item').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.style.transition = 'opacity 0.3s ease';
+                
+                img.addEventListener('mouseenter', function() {
+                    this.style.opacity = '0.8';
+                });
+                
+                img.addEventListener('mouseleave', function() {
+                    this.style.opacity = '1';
+                });
+                
+                img.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Use the snap system's built-in navigation function
+                    if (typeof navigateToSectionById === 'function') {
+                        navigateToSectionById(targetId);
+                    }
+                });
+            });
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeClickableItems);
+        } else {
+            initializeClickableItems();
+        }
+    </script>
 </body>
 </html>
