@@ -49,6 +49,29 @@ function snapToSection(direction) {
     animateToScroll(targetScroll);
 }
 
+// Navigate to section by ID (for external navigation like image clicks)
+function navigateToSectionById(sectionId) {
+    if (isSnapping) return;
+    
+    const targetSection = document.getElementById(sectionId);
+    if (!targetSection) return;
+    
+    // Find the index of the target section
+    const sectionArray = Array.from(sections);
+    const targetIndex = sectionArray.findIndex(section => section.id === sectionId);
+    
+    if (targetIndex === -1) return;
+    
+    currentSectionIndex = targetIndex;
+    
+    // Calculate scroll position for target section
+    const sectionHeights = getSectionHeights();
+    const targetScroll = sectionHeights.slice(0, targetIndex).reduce((a, b) => a + b, 0);
+    
+    isSnapping = true;
+    animateToScroll(targetScroll);
+}
+
 // Animate scroll to target position
 function animateToScroll(targetScroll) {
     const startScroll = scrollY;
