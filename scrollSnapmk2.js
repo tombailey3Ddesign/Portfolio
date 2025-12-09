@@ -188,12 +188,43 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('load', () => {
     initializeViewport();
     updateScroll();
+    initializeBackToTopButton();
 });
 
 window.addEventListener('resize', () => {
     initializeViewport();
     updateScroll();
 });
+
+// Back to top button functionality
+function initializeBackToTopButton() {
+    const backToTopButton = document.getElementById('back-to-top');
+    if (!backToTopButton) return;
+    
+    // Show/hide button based on scroll position
+    function updateBackToTopVisibility() {
+        if (currentSectionIndex > 0) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    }
+    
+    // Handle back to top button click
+    backToTopButton.addEventListener('click', () => {
+        currentSectionIndex = 0;
+        const targetScroll = 0;
+        isSnapping = true;
+        animateToScroll(targetScroll);
+    });
+    
+    // Update button visibility whenever scroll changes
+    const originalUpdateScroll = window.updateScroll;
+    window.updateScroll = function() {
+        originalUpdateScroll.call(this);
+        updateBackToTopVisibility();
+    };
+}
 
 // Track which image currently has popup open
 let currentHoveredImage = null;
