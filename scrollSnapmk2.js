@@ -308,11 +308,10 @@ function createImagePopup(imageSrc, galleryItem) {
             popupWidth = popupHeight * aspectRatio;
         }
         
-        // Center in bottom left corner
-        const heroHeight = window.innerHeight * 0.5; // Hero section is 50% height
-        const availableHeight = window.innerHeight - heroHeight; // Remaining space below hero
-        const topPosition = heroHeight + (availableHeight - popupHeight) / 2;
-        const leftPosition = (window.innerWidth * 0.5 - popupWidth) / 2; // Center in left half
+        // Center in bottom right corner (opposite side from scrollable content)
+        const availableHeight = window.innerHeight;
+        const topPosition = (availableHeight - popupHeight) / 2;
+        const leftPosition = window.innerWidth * 0.5 + (window.innerWidth * 0.5 - popupWidth) / 2; // Center in right half
         
         popup.style.width = `${popupWidth}px`;
         popup.style.height = `${popupHeight}px`;
@@ -394,7 +393,7 @@ function attachGalleryListeners() {
             width: 100%;
             height: 100%;
             overflow: hidden;
-            border-radius: 16px;
+            border-radius: 8px;
         `;
         item.parentElement.insertBefore(wrapper, item);
         wrapper.appendChild(item);
@@ -472,10 +471,11 @@ function attachGalleryListeners() {
                 font-weight: 500;
                 text-align: center;
                 padding: 1rem;
-                border-radius: 16px;
+                border-radius: 8px;
                 pointer-events: none;
                 word-wrap: break-word;
                 overflow: hidden;
+                z-index: 10;
             `;
             overlay.textContent = altText;
             e.target.parentElement.appendChild(overlay);
