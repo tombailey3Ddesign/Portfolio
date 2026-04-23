@@ -7,6 +7,31 @@ let scrollY = 0;
 let currentSectionIndex = 0;
 let isSnapping = false;
 let viewportHeight = 0;
+let snapScrollingEnabled = true;
+
+// Standard breakpoints where snap scrolling is enabled
+const SNAP_ENABLED_BREAKPOINTS = [320, 375, 414, 540, 768, 1024, 1280, 1366, 1920, 2560];
+const BREAKPOINT_TOLERANCE = 32; // 32px tolerance for window resizing
+
+// Check if current screen width supports snap scrolling
+function isSnapScrollingSupported() {
+    const width = window.innerWidth;
+    // Check if width matches any breakpoint (with tolerance)
+    return SNAP_ENABLED_BREAKPOINTS.some(bp => Math.abs(width - bp) <= BREAKPOINT_TOLERANCE);
+}
+
+// Update snap scrolling state
+function updateSnapScrollingState() {
+    const wasEnabled = snapScrollingEnabled;
+    snapScrollingEnabled = isSnapScrollingSupported();
+    
+    if (wasEnabled && !snapScrollingEnabled) {
+        console.log(`Snap scrolling disabled: width ${window.innerWidth}px not in standard breakpoints`);
+        isSnapping = false; // Cancel any active snap
+    } else if (!wasEnabled && snapScrollingEnabled) {
+        console.log(`Snap scrolling enabled: width ${window.innerWidth}px matches a breakpoint`);
+    }
+}
 
 // Initialize viewport height on load
 function initializeViewport() {
@@ -133,8 +158,10 @@ function updateScroll() {
 
 // Handle wheel scroll
 document.addEventListener('wheel', (e) => {
-    if (isSnapping) {
-        e.preventDefault();
+    if (!snapScrollingEnabled || isSnapping) {
+        if (isSnapping) {
+            e.preventDefault();
+        }
         return;
     }
     
@@ -154,6 +181,8 @@ document.addEventListener('touchstart', (e) => {
 }, { passive: true });
 
 document.addEventListener('touchmove', (e) => {
+    if (!snapScrollingEnabled) return;
+    
     if (isSnapping) {
         e.preventDefault();
         return;
@@ -175,7 +204,7 @@ document.addEventListener('touchmove', (e) => {
 
 // Handle keyboard scroll
 document.addEventListener('keydown', (e) => {
-    if (isSnapping) return;
+    if (!snapScrollingEnabled || isSnapping) return;
     
     if (e.key === 'ArrowDown') {
         snapToSection('down');
@@ -186,12 +215,14 @@ document.addEventListener('keydown', (e) => {
 
 // Initialize
 window.addEventListener('load', () => {
+    updateSnapScrollingState();
     initializeViewport();
     updateScroll();
     initializeBackToTopButton();
 });
 
 window.addEventListener('resize', () => {
+    updateSnapScrollingState();
     initializeViewport();
     updateScroll();
 });
@@ -250,14 +281,14 @@ function createImagePopup(imageSrc, galleryItem) {
     popup.id = 'image-popup';
     popup.style.cssText = `
         position: fixed;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 20px;
-        padding: 10px;
+        background: none;
+        border: none;
+        border-radius: 0px;
+        padding: 0px;
         max-width: 95vw;
         max-height: 95vh;
         z-index: 999999;
-        backdrop-filter: blur(20px);
+        backdrop-filter: none;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         pointer-events: auto;
         min-width: 300px;
@@ -308,9 +339,12 @@ function createImagePopup(imageSrc, galleryItem) {
             popupWidth = popupHeight * aspectRatio;
         }
         
-        // Center in bottom right corner (opposite side from scrollable content)
+        // Position popup so its center is between the bottom of the Collaborate button and bottom of screen
         const availableHeight = window.innerHeight;
-        const topPosition = (availableHeight - popupHeight) / 2;
+        const bottomOfButton = availableHeight * 0.4; // Bottom of Collaborate button (approximately 40% down)
+        const bottomOfScreen = availableHeight;
+        const midpointY = (bottomOfButton + bottomOfScreen) / 2;
+        const topPosition = midpointY - popupHeight / 2;
         const leftPosition = window.innerWidth * 0.5 + (window.innerWidth * 0.5 - popupWidth) / 2; // Center in right half
         
         popup.style.width = `${popupWidth}px`;
