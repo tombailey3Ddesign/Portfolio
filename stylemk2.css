@@ -346,7 +346,7 @@ body {
     transition: all 0.3s ease-out;
     object-fit: cover;
     width: 100%;
-    height: clamp(120px, 20vw, 250px);
+    height: clamp(100px, 16vw, 200px);
     position: relative;
     overflow: hidden;
     backdrop-filter: none;
@@ -432,7 +432,7 @@ body {
     transition: all 0.3s ease-out;
     object-fit: cover;
     width: 100%;
-    height: clamp(150px, 22vw, 240px);
+    height: clamp(120px, 18vw, 190px);
     position: relative;
     overflow: hidden;
     backdrop-filter: none;
@@ -683,7 +683,7 @@ body {
         font-size: 1.25rem;
     }
     .gallery-item {
-        height: 200px;
+        height: 160px;
     }
 }
 
@@ -723,12 +723,11 @@ body {
         font-size: 1.3rem;
     }
     .gallery-item {
-        height: 200px;
+        height: 160px;
     }
 }
 
 /* Tablet Large - 1024px */
-@media (min-width: 1008px) and (max-width: 1040px) {
     .hero-section {
         width: 50%;
         height: 50vh;
@@ -748,7 +747,7 @@ body {
         font-size: 1.4rem;
     }
     .gallery-item {
-        height: 220px;
+        height: 180px;
     }
 }
 
@@ -773,7 +772,7 @@ body {
         font-size: 1.5rem;
     }
     .gallery-item {
-        height: 240px;
+        height: 190px;
     }
 }
 
@@ -798,7 +797,7 @@ body {
         font-size: 1.55rem;
     }
     .gallery-item {
-        height: 250px;
+        height: 200px;
     }
 }
 
@@ -823,7 +822,7 @@ body {
         font-size: 1.7rem;
     }
     .gallery-item {
-        height: 280px;
+        height: 220px;
     }
 }
 
@@ -848,7 +847,7 @@ body {
         font-size: 2rem;
     }
     .gallery-item {
-        height: 350px;
+        height: 280px;
     }
 }
 
