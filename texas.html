@@ -1,63 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <title>Texas - The Very Best Tour | Tom Bailey</title>
-    <link rel="stylesheet" href="stylemk2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Texas — The Very Best Tour · Tom Bailey</title>
+    <meta name="description" content="3D environments for Texas's The Very Best Tour: a Paris, Texas-inspired desert sunrise and a replica of the Say What You Want video set.">
+    <meta property="og:title" content="Texas — The Very Best Tour · Tom Bailey">
+    <meta property="og:image" content="assets/img/texas-live-1000.webp">
+    <meta name="theme-color" content="#0b0b0b">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-    <!-- Fixed Background Layer -->
-    <div class="background-layer"></div>
-
-    <!-- Project Header with Back Button -->
-    <section class="project-header">
-        <div class="project-header-content">
-            <a href="index.html" class="back-button">← Back</a>
-            <h1 class="project-page-title">Texas - The Very Best Tour</h1>
+    <header class="site-header">
+        <div class="wrap">
+            <a class="logo" href="index.html">Tom Bailey</a>
+            <nav aria-label="Main">
+                <ul class="nav">
+                    <li><a href="index.html#work" aria-current="page">Work</a></li>
+                    <li class="nav-hide-sm"><a href="photography.html">Photography</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <!-- Project Content -->
-    <div class="project-page-container">
-        <section class="project-breakdown">
-            <div class="section-content">
-                
-                <!-- First text box -->
-                <div class="breakdown-textbox">
-                    <p>3D landscape inspired by an opening shot from the movie Paris, Texas, the movie which inspired the bands name. The aim was to create an atmospheric sunrise scene to play behind the opening track "I Don't Want A Lover".</p>
-                </div>
-                
-                <!-- First row of images -->
-                <div class="breakdown-gallery">
-                    <img src="Imagesmk2/Texas/Screenshot 2024-09-22 221316.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
-                    <img src="Imagesmk2/Texas/Screenshot 2024-09-23 104431.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
-                    <img src="Imagesmk2/Texas/boardtestHigherRez4.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
-                </div>
-                
-                <!-- Second text box -->
-                <div class="breakdown-textbox">
-                    <p>3D replica of the set from the music video "Say What You Want". The aim was to create a 3D space that could be used to add holograms using live footage of the band members.</p>
-                </div>
-                
-                <!-- Second row of images -->
-                <div class="breakdown-gallery">
-                    <img src="Imagesmk2/Texas/Texas_SpaceRoom.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
-                    <img src="Imagesmk2/Texas/Screenshot 2024-09-22 222336.jpg" class="gallery-item" alt="Texas - The Very Best Tour 2024">
-                </div>
+    <main class="wrap">
+        <section class="project-hero">
+            <a class="back" href="index.html#work">← All work</a>
+            <p class="eyebrow">Live events</p>
+            <h1 style="margin-top:1rem">Texas — The Very Best Tour</h1>
+            <dl class="meta">
+                <div><dt>Client</dt><dd>Texas</dd></div>
+                <div><dt>Year</dt><dd>2024</dd></div>
+                <div><dt>Work</dt><dd>3D environments, screen content</dd></div>
+            </dl>
+            <p class="lead">Two 3D environments for the band's screens: a desert sunrise to open the show, and a replica of a music video set built to hold holograms of the band.</p>
+        </section>
+
+        <figure class="reveal">
+            <img src="assets/img/texas-live-1000.webp"
+                 srcset="assets/img/texas-live-1000.webp 1000w, assets/img/texas-live-2200.webp 1814w"
+                 sizes="(min-width: 1440px) 1330px, 100vw"
+                 width="1814" height="1216" fetchpriority="high"
+                 alt="Texas on stage in front of a 3D desert sunrise on the main screen"
+                 data-lightbox data-full="assets/img/texas-live-2200.webp">
+            <figcaption>The desert sunrise live on the main screen</figcaption>
+        </figure>
+
+        <section class="block reveal">
+            <div class="block-text">
+                <h2>Opening sunrise</h2>
+                <p>A 3D landscape inspired by an opening shot from <em>Paris, Texas</em>, the film the band is named after. The aim was an atmospheric sunrise to play behind the opening track, “I Don't Want a Lover”.</p>
+            </div>
+            <div class="media-grid media-grid--2">
+                <figure>
+                    <img src="assets/img/texas-desert-tests-1000.webp"
+                         srcset="assets/img/texas-desert-tests-1000.webp 1000w, assets/img/texas-desert-tests-2200.webp 2200w"
+                         sizes="(min-width: 768px) 50vw, 100vw"
+                         width="2200" height="1238" loading="lazy" decoding="async"
+                         alt="Six lighting tests of the desert landscape at different points of the sunrise"
+                         data-lightbox data-full="assets/img/texas-desert-tests-2200.webp">
+                    <figcaption>Lighting tests across the sunrise</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/img/texas-live-2-1000.webp"
+                         srcset="assets/img/texas-live-2-1000.webp 1000w, assets/img/texas-live-2-2200.webp 1882w"
+                         sizes="(min-width: 768px) 50vw, 100vw"
+                         width="1882" height="1800" loading="lazy" decoding="async"
+                         alt="Guitarist on stage with the desert landscape on the screen behind"
+                         data-lightbox data-full="assets/img/texas-live-2-2200.webp">
+                    <figcaption>On stage</figcaption>
+                </figure>
             </div>
         </section>
-    </div>
 
-    <script src="scrollSnapmk2.js"></script>
-    <script>
-        // Disable scroll snap on project pages
-        document.removeEventListener('wheel', null);
-        document.removeEventListener('touchmove', null);
-        document.removeEventListener('keydown', null);
-        
-        // Enable normal scrolling
-        document.documentElement.style.overflow = 'auto';
-        document.body.style.overflow = 'auto';
-    </script>
+        <section class="block reveal">
+            <div class="block-text">
+                <h2>“Say What You Want” set</h2>
+                <p>A 3D replica of the set from the “Say What You Want” music video, built as a space to place holograms made from live footage of the band.</p>
+            </div>
+            <div class="media-grid media-grid--2">
+                <figure>
+                    <img src="assets/img/texas-room-ref-1000.webp"
+                         srcset="assets/img/texas-room-ref-1000.webp 1000w, assets/img/texas-room-ref-2200.webp 1902w"
+                         sizes="(min-width: 768px) 50vw, 100vw"
+                         width="1902" height="814" loading="lazy" decoding="async"
+                         alt="Still from the original music video: a white futuristic room with a performer"
+                         data-lightbox data-full="assets/img/texas-room-ref-2200.webp">
+                    <figcaption>Reference: the original music video</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/img/texas-room-1000.webp" width="960" height="540" loading="lazy" decoding="async"
+                         alt="3D replica of the white futuristic room"
+                         data-lightbox data-full="assets/img/texas-room-1000.webp">
+                    <figcaption>The 3D replica</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <a class="next-project" href="queen.html">
+            <span class="eyebrow">Next project</span>
+            <strong>Queen + Adam Lambert <span class="card-arrow">→</span></strong>
+        </a>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap">
+            <span>© <span data-year>2026</span> Tom Bailey</span>
+            <a href="mailto:tombailey3d.design@gmail.com">tombailey3d.design@gmail.com</a>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
